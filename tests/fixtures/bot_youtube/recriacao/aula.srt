@@ -1,0 +1,11 @@
+1
+00:00:00,500 --> 00:00:04,000
+Olá, nesta aula você vai ver agentes.
+
+2
+00:00:12,000 --> 00:00:16,000
+Agora o segundo passo.
+
+3
+00:00:24,000 --> 00:00:28,000
+E o terceiro, para fechar.

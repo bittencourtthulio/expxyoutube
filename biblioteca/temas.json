@@ -1,0 +1,70 @@
+{
+ "_": "Taxonomia fechada da biblioteca. `python3 biblioteca.py validar` recusa tema que não está aqui. Tema novo entra nesta lista antes de entrar numa nota.",
+ "temas": [
+  {
+   "id": "claude-code",
+   "nome": "Claude Code",
+   "cobre": "recursos, fluxos e truques do Claude Code: comandos, hooks, skills, subagentes, MCP, configuração"
+  },
+  {
+   "id": "ferramentas-ia",
+   "nome": "Ferramentas de IA para programar",
+   "cobre": "OpenCode, Cursor, Codex, Copilot, CLIs e IDEs com IA: o que cada uma faz, comparação, quando usar"
+  },
+  {
+   "id": "agentes",
+   "nome": "Agentes e harness",
+   "cobre": "agente autônomo, orquestração, multiagente, memória, ferramenta, MCP como arquitetura, harness em volta do modelo"
+  },
+  {
+   "id": "modelos",
+   "nome": "Modelos e LLMs",
+   "cobre": "lançamento de modelo, comparativo, preço por token, janela de contexto, modelo aberto, rodar local"
+  },
+  {
+   "id": "prompts",
+   "nome": "Prompts e contexto",
+   "cobre": "engenharia de prompt, engenharia de contexto, especificação, prompt que vira receita reaproveitável"
+  },
+  {
+   "id": "open-source",
+   "nome": "Repositórios e open source",
+   "cobre": "projeto open source que vale conhecer, repositório em alta, biblioteca, alternativa aberta a produto pago"
+  },
+  {
+   "id": "automacao",
+   "nome": "Automação e integrações",
+   "cobre": "fluxo automatizado, n8n e afins, script, integração entre sistemas, IA em processo do dia a dia"
+  },
+  {
+   "id": "engenharia",
+   "nome": "Engenharia de software com IA",
+   "cobre": "teste, revisão, arquitetura, legado, segurança, qualidade e dívida técnica quando a IA escreve o código"
+  },
+  {
+   "id": "infra",
+   "nome": "Infra, dados e custo",
+   "cobre": "deploy, banco, observabilidade, custo de nuvem e de token, desempenho"
+  },
+  {
+   "id": "produto-negocio",
+   "nome": "Produto e negócio de software",
+   "cobre": "software house, SaaS, precificação, venda de software, proposta, gestão de time e de projeto, IA mudando o modelo de negócio"
+  },
+  {
+   "id": "carreira",
+   "nome": "Carreira e mercado dev",
+   "cobre": "mercado de trabalho, o que estudar, papel do desenvolvedor com IA, liderança técnica"
+  },
+  {
+   "id": "produtividade",
+   "nome": "Produtividade e método",
+   "cobre": "rotina, método de trabalho, organização, como aprender mais rápido, ferramentas pessoais"
+  },
+  {
+   "id": "novidades",
+   "nome": "Novidades e lançamentos",
+   "cobre": "anúncio de empresa de IA, recurso novo, mudança de preço ou de política, evento"
+  }
+ ]
+}

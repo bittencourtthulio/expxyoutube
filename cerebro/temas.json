@@ -1,0 +1,90 @@
+{
+ "_": "Taxonomia fechada do cérebro de YouTube. `python3 cerebro.py validar` recusa tema que não está aqui. Tema novo entra nesta lista antes de entrar numa nota.",
+ "temas": [
+  {
+   "id": "algoritmo",
+   "nome": "Algoritmo e recomendação",
+   "cobre": "como o YouTube decide o que recomendar: sinais, satisfação, sugeridos, página inicial e testes de público"
+  },
+  {
+   "id": "titulo",
+   "nome": "Título",
+   "cobre": "título que ganha o clique sem enganar: promessa, curiosidade, palavras-chave, tamanho"
+  },
+  {
+   "id": "miniatura",
+   "nome": "Miniatura",
+   "cobre": "thumbnail: composição, rosto, texto, contraste, teste A/B de miniaturas"
+  },
+  {
+   "id": "ctr",
+   "nome": "Impressões e CTR",
+   "cobre": "taxa de clique, impressões, relação título e miniatura, leitura do CTR por origem"
+  },
+  {
+   "id": "gancho",
+   "nome": "Gancho e abertura",
+   "cobre": "primeiros 30 segundos: promessa, prova, corte de introdução, pré-visualização"
+  },
+  {
+   "id": "retencao",
+   "nome": "Retenção e roteiro",
+   "cobre": "curva de retenção, ritmo, estrutura do roteiro, pontos de queda, loops abertos"
+  },
+  {
+   "id": "shorts",
+   "nome": "Shorts",
+   "cobre": "formato vertical curto: duração, loop, gancho, relação Shorts e vídeos longos"
+  },
+  {
+   "id": "seo-busca",
+   "nome": "Busca e SEO",
+   "cobre": "busca do YouTube e do Google: palavras-chave, descrição, capítulos, tags, pesquisa de tema"
+  },
+  {
+   "id": "ideias",
+   "nome": "Ideias e pauta",
+   "cobre": "como escolher tema: demanda, outliers, lacunas, validação antes de gravar"
+  },
+  {
+   "id": "formato",
+   "nome": "Formato e duração",
+   "cobre": "duração ideal, série, tutorial, lista, estudo de caso, live, podcast"
+  },
+  {
+   "id": "cadencia",
+   "nome": "Cadência e consistência",
+   "cobre": "frequência de publicação, dia e horário, calendário, esgotamento"
+  },
+  {
+   "id": "comunidade",
+   "nome": "Comunidade e comentários",
+   "cobre": "comentários, respostas, aba comunidade, relação com inscritos, moderação"
+  },
+  {
+   "id": "crescimento",
+   "nome": "Crescimento do canal",
+   "cobre": "primeiros mil inscritos, nicho, posicionamento, colaboração, estratégia de canal"
+  },
+  {
+   "id": "metricas",
+   "nome": "Métricas e análise",
+   "cobre": "YouTube Studio, métricas que importam, leitura de dados, comparação entre vídeos"
+  },
+  {
+   "id": "monetizacao",
+   "nome": "Monetização",
+   "cobre": "programa de parcerias, anúncios, membros, patrocínio, produto próprio, funil"
+  },
+  {
+   "id": "producao",
+   "nome": "Produção e edição",
+   "cobre": "gravação, áudio, edição, ritmo de corte, equipamento, fluxo de produção"
+  },
+  {
+   "id": "tendencias",
+   "nome": "Tendências e mudanças",
+   "cobre": "mudanças do YouTube, anúncios oficiais, recursos novos, o que parou de funcionar"
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+  "_nota": "Tabela curada pela equipe, nao oficial: cor de destaque de ferramentas do territorio, medida no site em 2026-09-23. cor null = usa a identidade CANAL. Marca nova: acrescente aqui, com contraste >= 3:1 sobre #16181A.",
+  "marcas": {
+    "claude": {
+      "nome": "Claude",
+      "cor": "#D97757",
+      "hosts": [
+        "claude.com",
+        "claude.ai",
+        "anthropic.com"
+      ]
+    },
+    "supabase": {
+      "nome": "Supabase",
+      "cor": "#3ECF8E",
+      "hosts": [
+        "supabase.com",
+        "supabase.io"
+      ]
+    },
+    "n8n": {
+      "nome": "n8n",
+      "cor": "#EA4B71",
+      "hosts": [
+        "n8n.io"
+      ]
+    },
+    "github": {
+      "nome": "GitHub",
+      "cor": "#F0F6FC",
+      "hosts": [
+        "github.com",
+        "github.blog"
+      ]
+    },
+    "openai": {
+      "nome": "OpenAI",
+      "cor": "#10A37F",
+      "hosts": [
+        "openai.com",
+        "chatgpt.com"
+      ]
+    },
+    "vercel": {
+      "nome": "Vercel",
+      "cor": "#FFFFFF",
+      "hosts": [
+        "vercel.com"
+      ]
+    },
+    "cursor": {
+      "nome": "Cursor",
+      "cor": null,
+      "hosts": [
+        "cursor.com",
+        "cursor.sh"
+      ]
+    },
+    "opencode": {
+      "nome": "OpenCode",
+      "cor": null,
+      "hosts": [
+        "opencode.ai"
+      ]
+    },
+    "google-gemini": {
+      "nome": "Gemini",
+      "cor": "#8AB4F8",
+      "hosts": [
+        "gemini.google.com",
+        "ai.google.dev"
+      ]
+    },
+    "lovable": {
+      "nome": "Lovable",
+      "cor": "#FF6B9D",
+      "hosts": [
+        "lovable.dev"
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# Credenciais e configurações privadas
+.env
+.env.*
+!.env.example
+client_secret*.json
+*credentials*.json
+token*.json
+tokens/
+*.pem
+*.key
+*.p12
+*.pfx
+# Ambiente e estado local
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+.mimocode/
+.claude/settings.local.json
+estado/
+planejamento/*
+!planejamento/.gitkeep
+editorial/analises/dados/
+editorial/analises/relatorios/*
+!editorial/analises/relatorios/.gitkeep
+cerebro/videos/*
+!cerebro/videos/.gitkeep
+biblioteca/videos/*
+!biblioteca/videos/.gitkeep
+apresentacoes/fila.json
+apresentacoes/relatos/
+apresentacoes/decks/*
+!apresentacoes/decks/.gitkeep
+apresentacoes/comuns/*.png
+apresentacoes/motion/node_modules/
+apresentacoes/motion/.remotion/
+apresentacoes/decks/*/saida/
+*.log
+
+# Mídias privadas
+midias/shorts/*
+!midias/shorts/.gitkeep

@@ -1,0 +1,94 @@
+{
+ "_": "Configuração do `biblioteca.py descobrir`. Neste projeto a descoberta só sugere: o cadastro de canal exige pedido do Usuário via /biblioteca-canal (D-41).",
+ "temas_alvo": "IA para negócios; IA para SaaS e software houses (produto, venda, operação e desenvolvimento de software com IA)",
+ "consultas": [
+  {
+   "q": "IA para negócios",
+   "idioma": "pt"
+  },
+  {
+   "q": "inteligência artificial para empresas",
+   "idioma": "pt"
+  },
+  {
+   "q": "agentes de IA para empresas",
+   "idioma": "pt"
+  },
+  {
+   "q": "IA para SaaS",
+   "idioma": "pt"
+  },
+  {
+   "q": "criar SaaS com IA",
+   "idioma": "pt"
+  },
+  {
+   "q": "IA para software house",
+   "idioma": "pt"
+  },
+  {
+   "q": "desenvolvimento de software com IA",
+   "idioma": "pt"
+  },
+  {
+   "q": "AI for business owners",
+   "idioma": "en"
+  },
+  {
+   "q": "AI for SaaS founders",
+   "idioma": "en"
+  },
+  {
+   "q": "AI agents for software companies",
+   "idioma": "en"
+  }
+ ],
+ "janelas": [
+  "mes",
+  "ano"
+ ],
+ "resultados_por_busca": 15,
+ "duracao_minima_seg": 180,
+ "minimo_visualizacoes": 100000,
+ "minimo_inscritos": 100000,
+ "fatia_minima": 0.5,
+ "titulos_por_canal": 30,
+ "max_candidatos": 10,
+ "max_canais_por_rodada": 3,
+ "corte_meses": 12,
+ "importar_por_rodada": 40,
+ "reavaliar_recusado_apos_dias": 60,
+ "palavras_do_tema": [
+  "ia",
+  "ai",
+  "inteligência artificial",
+  "artificial intelligence",
+  "agente",
+  "agentes",
+  "agent",
+  "agents",
+  "saas",
+  "software house",
+  "software",
+  "claude",
+  "chatgpt",
+  "gpt",
+  "llm",
+  "automação",
+  "automation",
+  "startup",
+  "negócio",
+  "negócios",
+  "business",
+  "empresa",
+  "empresas",
+  "vibe coding",
+  "cursor",
+  "n8n",
+  "mcp",
+  "prompt",
+  "prompts",
+  "founder",
+  "micro saas"
+ ]
+}

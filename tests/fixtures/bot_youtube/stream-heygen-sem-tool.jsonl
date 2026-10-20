@@ -1,0 +1,2 @@
+{"type": "system", "subtype": "init", "tools": ["mcp__heygen__get_current_user"], "mcp_servers": [{"name": "heygen", "status": "connected"}]}
+{"type": "result", "subtype": "success", "is_error": false, "result": "{\"creditos\": 1276, \"usuario\": \"usuario@exemplo.com\"}"}

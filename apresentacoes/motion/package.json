@@ -1,0 +1,26 @@
+{
+  "name": "youtube-squad-apresentacoes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slides 16:9 animados do canal (Remotion). Um MP4 por slide, a partir de decks/<slug>/deck.json.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "compositions": "remotion compositions src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render": "node scripts/render.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.522",
+    "@remotion/cli": "4.0.522",
+    "@remotion/google-fonts": "4.0.522",
+    "@remotion/layout-utils": "4.0.522",
+    "@remotion/renderer": "4.0.522",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.522"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.1",
+    "typescript": "5.6.3"
+  }
+}

@@ -1,0 +1,18 @@
+/* Galeria de apresentações: cartões com capa 16:9, score como etiqueta (verde a partir de 80, laranja abaixo), nunca vermelho como status. */
+.galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.deck { background: var(--papel); border: 1px solid var(--linha); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.deck .capa { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #0e1011; }
+.deck .capa.vazia { display: flex; align-items: center; justify-content: center; color: var(--tinta-3); font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+.deck-corpo { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.deck .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--tinta-2); }
+.deck h3 { font-size: 16px; line-height: 1.3; }
+.deck .motivo { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--tinta-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.deck .aviso-render { margin: 0; font-size: 12px; color: var(--aviso); }
+.deck .acoes { display: flex; gap: 8px; margin-top: auto; padding-top: 6px; }
+.deck .acoes a.botao { text-decoration: none; }
+.deck.gravada .capa { opacity: .7; } .deck.descartada .capa { opacity: .45; filter: grayscale(.6); }
+.apresentacoes .folha > header h2 span { color: var(--tinta-3); margin-left: 6px; }
+.apresentacoes details.folha { padding: 16px 26px; } .apresentacoes details.folha summary { font-size: 14px; font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--marca); }
+.apresentacoes details.folha[open] summary { margin-bottom: 14px; }
+.apresentacoes td.mono { font-size: 12px; color: var(--tinta-3); }
+@media (max-width: 700px) { .galeria { grid-template-columns: 1fr; } }

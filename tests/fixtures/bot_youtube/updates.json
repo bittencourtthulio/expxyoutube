@@ -1,0 +1,8 @@
+{"ok": true, "result": [
+ {"update_id": 1001, "_tipo": "link_youtube", "message": {"message_id": 11, "from": {"id": 123456789}, "chat": {"id": 123456789}, "text": "olha esse https://www.youtube.com/watch?v=gWKYOORNW9Q"}},
+ {"update_id": 1002, "_tipo": "link_outro", "message": {"message_id": 12, "from": {"id": 123456789}, "chat": {"id": 123456789}, "text": "https://www.instagram.com/p/abc123/"}},
+ {"update_id": 1003, "_tipo": "callback", "callback_query": {"id": "cb1", "from": {"id": 123456789}, "data": "motion:y20260928-150000", "message": {"message_id": 13, "chat": {"id": 123456789}}}},
+ {"update_id": 1004, "_tipo": "audio", "message": {"message_id": 14, "from": {"id": 123456789}, "chat": {"id": 123456789}, "voice": {"file_id": "voz1", "duration": 4}}},
+ {"update_id": 1005, "_tipo": "texto", "message": {"message_id": 15, "from": {"id": 123456789}, "chat": {"id": 123456789}, "text": "trocar o gancho"}},
+ {"update_id": 1006, "_tipo": "outro_chat", "message": {"message_id": 16, "from": {"id": 999}, "chat": {"id": 999}, "text": "https://youtu.be/gWKYOORNW9Q"}}
+]}

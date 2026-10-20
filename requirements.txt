@@ -1,0 +1,5 @@
+# Instalação: uv pip install --python .venv/bin/python -r requirements.txt  (a .venv não tem pip)
+google-api-python-client>=2.140
+google-auth-oauthlib>=1.2
+yt-dlp>=2026.8
+pytest>=8.3

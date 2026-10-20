@@ -1,0 +1,103 @@
+{
+ "_": "Configuração do `cerebro.py descobrir`: busca no YouTube quem ensina a crescer no YouTube. Desde D-45 a descoberta cadastra sozinha os aprovados (até max_canais_por_rodada), pelo /cerebro-descobrir ou /cerebro-canal sem URL.",
+ "temas_alvo": "como crescer no YouTube: algoritmo, título, miniatura, CTR, retenção, Shorts, análise no Studio, estratégia de canal",
+ "consultas": [
+  {
+   "q": "como crescer no YouTube",
+   "idioma": "pt"
+  },
+  {
+   "q": "algoritmo do YouTube como funciona",
+   "idioma": "pt"
+  },
+  {
+   "q": "thumbnail e título para YouTube",
+   "idioma": "pt"
+  },
+  {
+   "q": "retenção de público YouTube",
+   "idioma": "pt"
+  },
+  {
+   "q": "estratégia de canal no YouTube",
+   "idioma": "pt"
+  },
+  {
+   "q": "how to grow on YouTube",
+   "idioma": "en"
+  },
+  {
+   "q": "YouTube algorithm explained",
+   "idioma": "en"
+  },
+  {
+   "q": "YouTube thumbnail and title tips",
+   "idioma": "en"
+  },
+  {
+   "q": "YouTube audience retention",
+   "idioma": "en"
+  },
+  {
+   "q": "YouTube strategy for small channels",
+   "idioma": "en"
+  }
+ ],
+ "janelas": [
+  "mes",
+  "ano"
+ ],
+ "resultados_por_busca": 15,
+ "duracao_minima_seg": 180,
+ "minimo_visualizacoes": 100000,
+ "minimo_inscritos": 100000,
+ "fatia_minima": 0.5,
+ "titulos_por_canal": 30,
+ "max_candidatos": 10,
+ "max_canais_por_rodada": 2,
+ "corte_meses": 12,
+ "importar_por_rodada": 40,
+ "reavaliar_recusado_apos_dias": 60,
+ "palavras_do_tema": [
+  "youtube",
+  "canal",
+  "channel",
+  "inscritos",
+  "subscribers",
+  "subs",
+  "views",
+  "visualizações",
+  "thumbnail",
+  "thumbnails",
+  "miniatura",
+  "miniaturas",
+  "título",
+  "títulos",
+  "title",
+  "titles",
+  "algoritmo",
+  "algorithm",
+  "retenção",
+  "retention",
+  "shorts",
+  "ctr",
+  "clique",
+  "cliques",
+  "clicks",
+  "analytics",
+  "studio",
+  "monetização",
+  "monetization",
+  "creator",
+  "creators",
+  "criador",
+  "criadores",
+  "viral",
+  "nicho",
+  "niche",
+  "gancho",
+  "hook",
+  "roteiro",
+  "script"
+ ]
+}

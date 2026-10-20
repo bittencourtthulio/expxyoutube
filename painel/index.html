@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canal · Seu Canal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/estatico/base.css">
+<link rel="stylesheet" href="/estatico/dashboard.css">
+<link rel="stylesheet" href="/estatico/reuniao.css">
+<link rel="stylesheet" href="/estatico/tarefas.css">
+<link rel="stylesheet" href="/estatico/relatorios.css">
+<link rel="stylesheet" href="/estatico/sala3d.css">
+<link rel="stylesheet" href="/estatico/apresentacoes.css">
+</head>
+<body>
+<div class="topo">
+  <h1>Canal<span>.</span></h1>
+  <nav class="abas" role="tablist" aria-label="Seções do painel">
+    <button role="tab" data-aba="painel" aria-selected="true">Painel</button>
+    <button role="tab" data-aba="escritorio" aria-selected="false">Escritório</button>
+    <button role="tab" data-aba="reuniao" aria-selected="false">Reunião</button>
+    <button role="tab" data-aba="tarefas" aria-selected="false">Tarefas</button>
+    <button role="tab" data-aba="relatorios" aria-selected="false">Relatórios</button>
+    <button role="tab" data-aba="decisoes" aria-selected="false">Decisões</button>
+    <button role="tab" data-aba="conhecimento" aria-selected="false">Conhecimento</button>
+    <button role="tab" data-aba="grafo" aria-selected="false">Grafo</button>
+    <button role="tab" data-aba="apresentacoes" aria-selected="false">Apresentações</button>
+  </nav>
+  <div class="resumo" id="resumo"></div>
+</div>
+<main id="centro" role="tabpanel"></main>
+<script>
+let TOKEN = "__TOKEN__";
+const estado = { aba: "painel", kpis: null, daily: null };
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const num = (v) => v == null ? "–" : typeof v === "number" ? v.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) : String(v);
+const dataCurta = (iso) => iso ? new Date(iso.slice(0, 10) + "T12:00:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "") : "–";
+const hora = (iso) => iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) + " " + iso.slice(11, 16) : "";
+const STATUS_COR = { finalizada: "ok", aberta: "aviso", fazendo: "frio", ativa: "marca", aplicada: "ok", feita: "ok", respondida: "ok",
+  recusada: "aviso", cancelada: "", revogada: "", aguardando: "aviso" };
+const TIPOS_DAILY = { tarefa: "Tarefa", pergunta: "Pergunta", "nao-fazer": "Não fazer mais", aprendizado: "Aprendizado" };
+const DICAS_DAILY = {
+  tarefa: "Algo para a equipe fazer. A rotina da manhã executa e responde aqui com o que fez.",
+  pergunta: "Dúvida sobre uma análise, um vídeo ou o plano. Dá para pedir resposta agora ou esperar a rotina.",
+  "nao-fazer": "Proibição. Vale desde já para plano, roteiro e revisão, até você revogar.",
+  aprendizado: "Orientação sua que vira regra de trabalho. Vale desde já.",
+};
+const etiqueta = (texto, cor) => `<span class="etiqueta ${cor ?? STATUS_COR[texto] ?? ""}">${esc(texto)}</span>`;
+
+async function pega(url) {
+  const r = await fetch(url, { cache: "no-store" });
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.erro || r.status);
+  return j;
+}
+async function manda(url, corpo) {
+  const enviar = () => fetch(url, { method: "POST", headers: { "Content-Type": "application/json", "X-Painel-Token": TOKEN }, body: JSON.stringify(corpo) });
+  let r = await enviar();
+  // Um reinício do servidor renova o token; a aba já aberta recupera a sessão.
+  if (r.status === 403) {
+    const pagina = await fetch("/", { cache: "no-store" });
+    const token = pagina.ok && (await pagina.text()).match(/(?:const|let) TOKEN = "([^"\n]+)"/);
+    if (token) { TOKEN = token[1]; r = await enviar(); }
+  }
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.erro || r.status);
+  return j;
+}
+
+// ---------- cartão de KPI ----------
+function valorKpi(k) {
+  if (k.valor == null) return `<span style="color:var(--tinta-3)">sem dado</span>`;
+  const grande = Math.abs(k.valor) >= 100000 ? (k.valor / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + `<small>mil</small>` : esc(num(k.valor));
+  const sinal = ["inscritos_ganhos", "saldo_inscritos"].includes(k.id) && k.valor > 0 ? "+" : "";
+  return `${sinal}${grande}${k.unidade ? `<small>${esc(k.unidade)}</small>` : ""}`;
+}
+function deltaKpi(k) {
+  if (k.variacao_pct == null) return k.anterior != null ? `<span class="delta">antes ${esc(num(k.anterior))}${esc(k.unidade)}</span>` : "";
+  const subiu = k.variacao_pct > 0, bom = k.variacao_pct === 0 ? "" : (subiu === (k.bom !== "desce") ? "bom" : "ruim");
+  return `<span class="delta ${bom}"><b>${subiu ? "▲" : k.variacao_pct < 0 ? "▼" : "="} ${esc(num(Math.abs(k.variacao_pct)))}%</b> · antes ${esc(num(k.anterior))}${esc(k.unidade)}</span>`;
+}
+const cartaoKpi = (k) => `<div class="kpi"><span class="nome">${esc(k.nome)}</span><span class="valor${k.valor < 0 ? " negativo" : ""}">${valorKpi(k)}</span>${deltaKpi(k)}${k.nota ? `<span class="obs">${esc(k.nota)}</span>` : ""}</div>`;
+
+// ---------- daily e equipe, usados pela reunião e pelas tarefas ----------
+async function carregaDaily() { estado.daily = await pega("/api/daily"); return estado.daily; }
+async function carregaEquipe() {
+  if (!estado.equipe) { const r = await pega("/api/chat/canais"); estado.equipe = r.equipe; estado.canais = r.canais; }
+  return estado.equipe;
+}
+const nomeDe = (id) => id === "usuario" ? "Você" : id === "painel" ? "Painel" : id === "todos" ? "Todos" : id === "ambos" ? "Analista e planejador"
+  : (estado.equipe || []).find((a) => a.id === id)?.nome || id;
+
+// ---------- abas ----------
+const centro = document.getElementById("centro");
+const vazioDaAba = (texto) => `<div class="folha"><p class="vazio">${esc(texto)}</p></div>`;
+const ABAS = {
+  painel: async () => { estado.kpis = await pega("/api/kpis"); desenhaPainel(centro); },
+  reuniao: () => window.abreReuniao ? abreReuniao(centro) : (centro.innerHTML = vazioDaAba("A reunião ainda não foi carregada.")),
+  tarefas: () => window.abreTarefas ? abreTarefas(centro) : (centro.innerHTML = vazioDaAba("O quadro de tarefas ainda não foi carregado.")),
+  relatorios: () => window.abreRelatorios ? abreRelatorios(centro) : (centro.innerHTML = vazioDaAba("A central de relatórios ainda não foi carregada.")),
+  decisoes: () => window.abreDecisoes ? abreDecisoes(centro) : (centro.innerHTML = vazioDaAba("O diário de decisões ainda não foi carregado.")),
+  conhecimento: () => window.abreConhecimento ? abreConhecimento(centro) : (centro.innerHTML = vazioDaAba("O cérebro e a biblioteca ainda não estão ligados ao painel.")),
+  escritorio: () => abreEscritorio(centro),
+  grafo: () => abreGrafo(centro),
+  apresentacoes: () => window.abreApresentacoes ? abreApresentacoes(centro) : (centro.innerHTML = vazioDaAba("A galeria de apresentações ainda não foi carregada.")),
+};
+const AO_SAIR = { escritorio: () => window.fechaEscritorio?.(), grafo: () => window.fechaGrafo?.() };  // cena 3D não fica rodando escondida
+async function trocaAba(aba) {
+  if (!ABAS[aba]) aba = "painel";
+  if (estado.aba !== aba) AO_SAIR[estado.aba]?.();
+  estado.aba = aba;
+  document.querySelectorAll(".abas button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.aba === aba)));
+  if (location.hash !== "#" + aba) history.replaceState(null, "", "#" + aba);
+  try { await ABAS[aba](); } catch (e) { centro.innerHTML = `<div class="folha"><p class="erro-carga">Não consegui carregar: ${esc(e.message)}</p></div>`; }
+}
+document.querySelector(".abas").addEventListener("click", (e) => { const b = e.target.closest("button[data-aba]"); if (b) trocaAba(b.dataset.aba); });
+
+async function atualizaResumo() {
+  try {
+    estado.daily = await pega("/api/daily");
+    const esperando = estado.daily.itens.filter((f) => f.aguarda_usuario).length;
+    const botao = document.querySelector('[data-aba="tarefas"]');
+    botao.innerHTML = "Tarefas" + (esperando ? `<span class="contador" title="aguardando você">${esperando}</span>` : "");
+    const k = estado.kpis;
+    document.getElementById("resumo").textContent = k?.canal?.titulo ? `${k.canal.titulo} · análise de ${dataCurta(k.data)}` : "";
+  } catch (e) { /* o resumo é acessório: falha aqui não derruba a aba aberta */ }
+}
+</script>
+<script src="/estatico/dashboard.js"></script>
+<script src="/estatico/reuniao.js"></script>
+<script src="/estatico/tarefas.js"></script>
+<script src="/estatico/relatorios.js"></script>
+<script src="/estatico/decisoes.js"></script>
+<script src="/estatico/conhecimento.js"></script>
+<script src="/estatico/sala3d.js"></script>
+<script src="/estatico/apresentacoes.js"></script>
+<script>
+trocaAba(location.hash.slice(1) || "painel").then(atualizaResumo);
+setInterval(atualizaResumo, 8000);
+</script>
+</body>
+</html>
