@@ -130,7 +130,7 @@ def test_camada_editorial_existe():
 
 COMANDOS = RAIZ / ".claude" / "commands"
 SKILLS = RAIZ / ".claude" / "skills"
-CHAMADA = re.compile(r"(?:python3|\.venv/bin/python)\s+([\w/]+\.py)(?:\s+([a-z][\w-]*))?")
+CHAMADA = re.compile(r"(?:python3|\.venv/bin/python)[ \t]+([\w/]+\.py)(?:[ \t]+([a-z][\w-]*))?")
 _SUBS = {}
 
 
